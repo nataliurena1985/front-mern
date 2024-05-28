@@ -6,6 +6,10 @@ import { createTaskRequest } from "../api/tasks.api";
 import { useTasks } from "../context/TaskProvider";
 
 export default function TaskForm() {
+
+  //const { createTask, getTask, updateTask } = useTasks();
+
+  const { createTask } = useTasks();
   return (
     <div>
       <Formik
@@ -15,15 +19,11 @@ export default function TaskForm() {
         }}
         onSubmit={async (values, actions) => {
           console.log(values);
+
+          await createTask(values);
           actions.resetForm();
 
-          //const task = await getTask(params.id);
-          try {
-            const response = await createTaskRequest(values);
-            console.log(response);
-          } catch (error) {
-            console.error(error);
-          }
+          
         }}
       >
         {({ handleChange, handleSubmit, values, isSubmitting }) => (
