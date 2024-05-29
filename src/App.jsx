@@ -7,10 +7,10 @@ import { TaskContextProvider } from "./context/TaskProvider";
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-zinc-800 h-screen">
       <Navbar />
 
-      <div>
+      <div className="container mx-auto py-4 px-20">
         <TaskContextProvider>
           <Routes>
             <Route path="/" element={<TasksPage />} />
